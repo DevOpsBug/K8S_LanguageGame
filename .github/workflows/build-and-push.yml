@@ -50,6 +50,6 @@ jobs:
       - name: Build and push ${{ matrix.service }} image
         if: steps.changes.outputs.changed == 'true'
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository_owner.toLower() }}/k8s_languagegame_${{ matrix.service }}:latest
+          IMAGE_NAME=ghcr.io/devopsbug/k8s_languagegame_${{ matrix.service }}:latest
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
