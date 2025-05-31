@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Images</title>
+    <style>
+        .gallery { display: flex; flex-wrap: wrap; }
+        .item { margin: 10px; text-align: center; }
+        img { width: 150px; height: auto; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>All Images</h1>
+    <div class="gallery" id="gallery"></div>
+    <script>
+        fetch('http://k8s_languagegame_backend:5000/assets')
+            .then(response => response.json())
+            .then(data => {
+                const gallery = document.getElementById('gallery');
+                data.forEach(asset => {
+                    // Adjust the image path as needed for your setup
+                    const imgPath = 'https://devopsbug.com/media/projects/openlingua/images/';
+                    const imgSrc = imgPath + asset.asset_name;
+                    const div = document.createElement('div');
+                    div.className = 'item';
+                    div.innerHTML = `
+                        <img src="${imgSrc}" alt="${asset.asset_name}">
+                        <div>${asset.asset_name}</div>
+                    `;
+                    gallery.appendChild(div);
+                });
+            });
+    </script>
+</body>
+</html>
