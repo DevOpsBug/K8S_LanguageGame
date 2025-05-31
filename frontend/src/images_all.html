@@ -13,7 +13,7 @@
     <h1>All Images</h1>
     <div class="gallery" id="gallery"></div>
     <script>
-        fetch('http://k8s_languagegame_backend:5000/assets')
+        fetch('/api/assets')
             .then(response => response.json())
             .then(data => {
                 const gallery = document.getElementById('gallery');
