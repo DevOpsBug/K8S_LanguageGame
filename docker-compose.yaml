@@ -1,7 +1,6 @@
 services:
   db:
-    #build: ./db
-    image: k8s_languagegame_db:latest
+    image: ghcr.io/devopsbug/k8s_languagegame_db:latest
     container_name: k8s_languagegame_db
     environment:
       POSTGRES_USER: language_game
@@ -11,7 +10,7 @@ services:
       - "5432:5432"
 
   backend:
-    image: k8s_languagegame_backend:latest
+    image: ghcr.io/devopsbug/k8s_languagegame_backend:latest
     container_name: k8s_languagegame_backend
     environment:
       DB_HOST: db
@@ -26,8 +25,7 @@ services:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
 
   frontend:
-    #build: ./frontend
-    image: k8s_languagegame_frontend:latest
+    image: ghcr.io/devopsbug/k8s_languagegame_frontend:latest
     container_name: k8s_languagegame_frontend
     ports:
       - "8080:80"
