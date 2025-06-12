@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS image_assets;
+
 CREATE TABLE IF NOT EXISTS image_assets (
     id SERIAL PRIMARY KEY,
     asset_name TEXT,
