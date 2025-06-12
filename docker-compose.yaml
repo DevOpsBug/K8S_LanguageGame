@@ -1,7 +1,7 @@
 services:
   db:
     image: ghcr.io/devopsbug/k8s_languagegame_db:latest
-    pull: always
+    pull_policy: always
     container_name: k8s_languagegame_db
     environment:
       POSTGRES_USER: language_game
@@ -12,7 +12,7 @@ services:
 
   backend:
     image: ghcr.io/devopsbug/k8s_languagegame_backend:latest
-    pull: always
+    pull_policy: always
     container_name: k8s_languagegame_backend
     environment:
       DB_HOST: db
@@ -28,7 +28,7 @@ services:
 
   frontend:
     image: ghcr.io/devopsbug/k8s_languagegame_frontend:latest
-    pull: always
+    pull_policy: always
     container_name: k8s_languagegame_frontend
     ports:
       - "8080:80"
