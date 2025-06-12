@@ -11,3 +11,8 @@ DB_CONFIG = {
 API_CONFIG = {
     "port": int(os.getenv("API_PORT", "5000")),
 }
+
+ASSET_CONFIG = {
+    "image_url_prefix": "https://devopsbug.com/media/projects/openlingua/images/",
+    "audio_url_prefix": "https://devopsbug.com/media/projects/openlingua/audio/",
+}
