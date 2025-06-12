@@ -1,10 +1,9 @@
 from flask import Flask, jsonify
 import psycopg
 from config import DB_CONFIG, API_CONFIG, ASSET_CONFIG
-
 app = Flask(__name__)
 
-@app.route("/assets")
+@app.route("/assets/all", methods=["GET"])
 def get_assets():
     with psycopg.connect(**DB_CONFIG) as conn:
         with conn.cursor() as cur:
