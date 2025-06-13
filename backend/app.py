@@ -31,7 +31,7 @@ def get_attribution():
                         "download_date": download_date, 
                         "license": license, 
                         "license_version_date": license_version_date, 
-                        "license_pdf_url": license_pdf_url, 
+                        "license_pdf_url": f"{ASSET_CONFIG['license_url_prefix']}{license_pdf_url}", 
                         "attribution_text": attribution_text, 
                         "attribution_html": attribution_html
                     })

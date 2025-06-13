@@ -15,4 +15,5 @@ API_CONFIG = {
 ASSET_CONFIG = {
     "image_url_prefix": "https://devopsbug.com/media/projects/openlingua/images/",
     "audio_url_prefix": "https://devopsbug.com/media/projects/openlingua/audio/",
+    "license_url_prefix": "https://devopsbug.com/media/projects/openlingua/"
 }
