@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attribution</title>
+    <style>
+        .gallery { display: flex; flex-direction: column; gap: 20px; }
+        .item {
+            display: flex;
+            align-items: flex-start;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 6px;
+            background: #fafafa;
+            max-width: 800px;
+        }
+        .item img {
+            width: 150px;
+            height: auto;
+            border: 1px solid #ccc;
+            margin-right: 20px;
+            background: #fff;
+        }
+        .info {
+            flex: 1;
+            text-align: left;
+        }
+        .info .field {
+            margin-bottom: 6px;
+        }
+        .info .field strong {
+            display: inline-block;
+            min-width: 160px;
+        }
+        .info .attribution-html {
+            margin-top: 8px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attribution</h1>
+    <div class="gallery" id="gallery"></div>
+    <script>
+        fetch('/api/assets/attribution')
+            .then(response => response.json())
+            .then(data => {
+                const gallery = document.getElementById('gallery');
+                data.forEach(asset => {
+                    const div = document.createElement('div');
+                    div.className = 'item';
+                    div.innerHTML = `
+                        <img src="${asset.image_url}" alt="${asset.asset_name}">
+                        <div class="info">
+                            <div class="field"><strong>Asset Name:</strong> ${asset.asset_name}</div>
+                            <div class="field"><strong>Asset Category:</strong> ${asset.asset_category}</div>
+                            <div class="field"><strong>Image Filename:</strong> ${asset.image_filename}</div>
+                            <div class="field"><strong>Source:</strong> ${asset.source}</div>
+                            <div class="field"><strong>Download URL:</strong> <a href="${asset.download_url}" target="_blank">${asset.download_url}</a></div>
+                            <div class="field"><strong>Download Date:</strong> ${asset.download_date}</div>
+                            <div class="field"><strong>License:</strong> ${asset.license}</div>
+                            <div class="field"><strong>License Version Date:</strong> ${asset.license_version_date}</div>
+                            <div class="field"><strong>License PDF URL:</strong> <a href="${asset.license_pdf_url}" target="_blank">${asset.license_pdf_url}</a></div>
+                            <div class="field"><strong>Attribution Text:</strong> ${asset.attribution_text}</div>
+                            <div class="attribution-html">${asset.attribution_html}</div>
+                        </div>
+                    `;
+                    gallery.appendChild(div);
+                });
+            });
+    </script>
+</body>
+</html>
