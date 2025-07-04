@@ -13,6 +13,16 @@ def get_assets():
             rows = cur.fetchall()
             return jsonify([dict(zip(["asset_name", "image_url"], [row[0], f"{ASSET_CONFIG['image_url_prefix']}{row[1]}/{row[2]}" ])) for row in rows])
 
+@app.route("/assets/asset_category/<asset_category>", methods=["GET"])
+def get_assets_by_category(asset_category):
+    print(f"Fetching assets for category: {asset_category}")
+    with psycopg.connect(**DB_CONFIG) as conn:
+        with conn.cursor() as cur:
+            cur.execute(f"SELECT asset_name, asset_category, image_filename FROM image_assets WHERE asset_category = '{asset_category}';")
+            rows = cur.fetchall()
+            print(f"Got {len(rows)} items for category '{asset_category}'")
+            return jsonify([dict(zip(["asset_name", "image_url"], [row[0], f"{ASSET_CONFIG['image_url_prefix']}{row[1]}/{row[2]}" ])) for row in rows])
+
 @app.route("/assets/attribution", methods=["GET"])
 def get_attribution():
     with psycopg.connect(**DB_CONFIG) as conn:
