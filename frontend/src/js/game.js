@@ -112,12 +112,17 @@ function startGame() {
             imageContainer.innerHTML = '';
 
             shuffledImages.forEach((imgUrl, index) => {
-                const imgTile = document.createElement('img');
-                imgTile.src = imgUrl;
-                imgTile.alt = `Image ${index + 1}`;
-                imgTile.className = 'image-tile';
-                imgTile.onclick = () => handleImageClick(imgTile, imgUrl, `${correctImage}`);
-                imageContainer.appendChild(imgTile);
+                const tile = document.createElement('div');
+                tile.className = 'image-tile';
+                tile.onclick = () => handleImageClick(img, imgUrl, `${correctImage}`);
+
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.alt = `Image ${index + 1}`;
+                img.className = 'image';
+
+                tile.appendChild(img);
+                imageContainer.appendChild(tile);
             });
 
             // Hide result message and new game button

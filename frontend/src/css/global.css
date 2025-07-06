@@ -23,26 +23,90 @@ body {
 
 #header,
 #footer {
-  display: block; /* Ensures they're stacked vertically */
+  display: block; 
   width: 100%;
 }
 
-/* Container styling */
+
+/* ------------ HEADER ---------------------- */ 
+
+
+#logo-banner {
+  display: flex; 
+  flex-direction: row;
+  width: 100%;
+  background-color: #0085e5ff;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+#logo {
+  max-width: 25%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#logo-banner-text{
+  color: rgb(50, 50, 50);
+  text-align: center;
+}
+
+#logo-banner-text a{
+  color: rgb(50, 50, 50);
+}
+
+
+/* ------------ CONTENT ---------------------- */ 
+
 #content {
     display: block; /* Ensures they're stacked vertically */
     width: 100%;
     text-align: center;
     padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 15px;
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
-    background-color: #ffffff; /* White background for contrast */
-    /*max-width: 500px;*/
-    /*width: 90%;*/
-    border: 10px solid #0085e5ff;
+    background-color: #ffffff;   
+    /*border: 10px solid #0085e5ff;*/
+    border: 1px solid rgb(50, 50, 50);
 }
 
 .title {
     font-size: 2.5rem;
     color: #ff4500; /* Bright orange for fun and engagement */
     margin-bottom: 20px;
+}
+
+
+/* ------------ FOOTER ---------------------- */ 
+
+#footer-banner {
+  display: flex; 
+  flex-direction: row;
+  width: 100%;
+  background-color: #0085e5ff;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#footer-logo {
+  max-width: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#footer-banner-text{
+  color: rgb(50, 50, 50);
+  text-align: center;
+  padding: 2%;
+
+}
+
+#footer-banner-text a{
+  color: rgb(50, 50, 50);
 }
