@@ -1,3 +1,4 @@
+/*
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,7 +14,7 @@ header {
     padding: 20px;
     color: black;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+}*/
 
 .flag-container {
     display: flex;
@@ -30,11 +31,8 @@ header {
 
 .category-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns per row */
-    gap: 10px;
-    padding: 20px;
-    width: 100%;
-    max-width: 600px;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0%;
 }
 
 .category-tile {
@@ -44,9 +42,8 @@ header {
     padding: 10px;
     background-color: #f0f0f0;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    border: none;
+    margin: 10px;
 }
 
 .category-tile:hover {

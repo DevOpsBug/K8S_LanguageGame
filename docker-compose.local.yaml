@@ -1,0 +1,39 @@
+services:
+  db:
+    image: k8s_languagegame_db:local
+    #image: ghcr.io/devopsbug/k8s_languagegame_db:latest
+    #pull_policy: always
+    container_name: k8s_languagegame_db
+    environment:
+      POSTGRES_USER: language_game
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: language_game
+    ports:
+      - "5432:5432"
+
+  backend:
+    image: k8s_languagegame_backend:local
+    #image: ghcr.io/devopsbug/k8s_languagegame_backend:latest
+    #pull_policy: always
+    container_name: k8s_languagegame_backend
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: language_game
+      DB_USER: language_game
+      DB_PASSWORD: secret
+      API_PORT: ${BACKEND_PORT}
+    depends_on:
+      - db
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+
+  frontend:
+    image: k8s_languagegame_frontend:local
+    #image: ghcr.io/devopsbug/k8s_languagegame_frontend:latest
+    #pull_policy: always
+    container_name: k8s_languagegame_frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend

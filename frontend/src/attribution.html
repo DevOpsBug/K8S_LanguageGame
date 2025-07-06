@@ -52,6 +52,7 @@
                     div.innerHTML = `
                         <img src="${asset.image_url}" alt="${asset.asset_name}">
                         <div class="info">
+                            <div class="field">${asset.attribution_html}</div>
                             <div class="field"><strong>Asset Name:</strong> ${asset.asset_name}</div>
                             <div class="field"><strong>Asset Category:</strong> ${asset.asset_category}</div>
                             <div class="field"><strong>Image Filename:</strong> ${asset.image_filename}</div>
@@ -61,8 +62,8 @@
                             <div class="field"><strong>License:</strong> ${asset.license}</div>
                             <div class="field"><strong>License Version Date:</strong> ${asset.license_version_date}</div>
                             <div class="field"><strong>License PDF URL:</strong> <a href="${asset.license_pdf_url}" target="_blank">${asset.license_pdf_url}</a></div>
-                            <div class="field"><strong>Attribution Text:</strong> ${asset.attribution_text}</div>
-                            <div class="attribution-html">${asset.attribution_html}</div>
+                            <div class="field"><strong>Attribution:</strong> ${asset.attribution_html}</div>
+                            
                         </div>
                     `;
                     gallery.appendChild(div);

@@ -1,0 +1,44 @@
+
+
+/* Flag grid styling */
+.flag-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 0%; /* Space between buttons */
+}
+
+/* Flag button styling */
+.flag-button {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    border: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.flag-button:hover {
+    transform: scale(1.05); /* Enlarge slightly on hover */
+}
+
+/* Flag image styling */
+.flag-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .flag-image {
+        width: 80px; /* Smaller images for small screens */
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+
+
+
