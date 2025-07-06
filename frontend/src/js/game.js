@@ -7,17 +7,15 @@ let score = 0;
 const urlParams = new URLSearchParams(window.location.search);
 const selectedLanguage = urlParams.get('language');
 const category = urlParams.get('category');
-const apiUrl = `/language-game?language=${selectedLanguage}&category=${category}`;
+const apiUrl = `/api/language-game?language=${selectedLanguage}&category=${category}`;
 
 
 
 // Map of languages to flag image paths
 const flagImages = {
-    italian: 'images/flags/italy.png',
-    german: 'images/flags/germany.png',
-    spanish: 'images/flags/spain.png',
-    french: 'images/flags/france.png',
-    english: 'images/flags/english.png'
+    english: 'https://devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg',
+    italian: 'https://devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg',
+    german: 'https://devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg',
 };
 
 // Update the flag image based on the selected language
@@ -100,15 +98,14 @@ function startGame() {
 
             // Play audio
             const audioPlayer = document.getElementById('audioPlayer');
-            audioPlayer.src = `audio/${category}/${audioUrl}`;
+            audioPlayer.src = `${audioUrl}`;
             audioPlayer.play().catch(error => console.error('Audio play failed:', error));
 
             // Prepare image tiles
-            const imageURLPrefix = `images/${category}/`;
             const imageContainer = document.getElementById('images');
             const imageUrls = [
-                `${imageURLPrefix}${correctImage}`,
-                ...incorrectImages.map(img => `${imageURLPrefix}${img}`),
+                `${correctImage}`,
+                ...incorrectImages.map(img => `${img}`),
             ];
 
             const shuffledImages = imageUrls.sort(() => Math.random() - 0.5);
@@ -119,7 +116,7 @@ function startGame() {
                 imgTile.src = imgUrl;
                 imgTile.alt = `Image ${index + 1}`;
                 imgTile.className = 'image-tile';
-                imgTile.onclick = () => handleImageClick(imgTile, imgUrl, `${imageURLPrefix}${correctImage}`);
+                imgTile.onclick = () => handleImageClick(imgTile, imgUrl, `${correctImage}`);
                 imageContainer.appendChild(imgTile);
             });
 

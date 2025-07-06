@@ -1,18 +1,16 @@
 // Map of languages to flag image paths
 const flagImages = {
-    english: 'images/flags/english.png',
-    italian: 'images/flags/italy.png',
-    german: 'images/flags/germany.png',
-    spanish: 'images/flags/spain.png',
-    french: 'images/flags/france.png'
+    english: 'https://devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg',
+    italian: 'https://devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg',
+    german: 'https://devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg',
+
 };
 
 // Map of categories to image paths
 const categoryImages = {
-    fruits: 'images/categories/fruits.png',
-    vegetables: 'images/categories/vegetables.jpg',
-    animals: 'images/categories/animals.png',
-    colors: 'images/categories/colors.png',
+    fruits: 'https://devopsbug.com/media/projects/openlingua/images/categories/fruit-4202929_640.png',
+    vegetables: 'https://devopsbug.com/media/projects/openlingua/images/categories/vegetables-1105635_640.jpg',
+    animals: 'https://devopsbug.com/media/projects/openlingua/images/categories/zoo-7417502_640.png',
 };
 
 // Parse language from query parameters
