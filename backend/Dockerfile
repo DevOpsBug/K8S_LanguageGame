@@ -10,4 +10,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD gunicorn -w 4 -b ${BACKEND_HOST}:${BACKEND_PORT} app:app
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE ${BACKEND_PORT}
+CMD ["/entrypoint.sh"]

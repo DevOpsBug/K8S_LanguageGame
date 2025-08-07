@@ -1,8 +1,9 @@
 FROM postgres:16
 
-ENV POSTGRES_DB=language_game
-ENV POSTGRES_USER=language_game
-ENV POSTGRES_PASSWORD=secret
+# Expected environment variables:
+# ENV POSTGRES_DB
+# ENV POSTGRES_USER
+# ENV POSTGRES_PASSWORD
 
 # Copy data and import script into the default init location
 RUN mkdir -p /init/csv/
