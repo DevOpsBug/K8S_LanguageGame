@@ -20,7 +20,8 @@ services:
       DB_NAME: language_game
       DB_USER: language_game
       DB_PASSWORD: secret
-      API_PORT: ${BACKEND_PORT}
+      BACKEND_PORT: ${BACKEND_PORT}
+      BACKEND_HOST: 0.0.0.0
     depends_on:
       - db
     ports:

@@ -1,16 +1,14 @@
-# Use a small official NGINX image
 FROM nginx:alpine
 
-# Remove the default NGINX static files
+ENV BACKEND_HOST=127.0.0.1
+ENV BACKEND_PORT=5000
+
 RUN rm -rf /usr/share/nginx/html/*
-
-# Copy static assets from the src directory to the NGINX web root
 COPY src/ /usr/share/nginx/html
-
-# Replace NGINX default config
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
-# Expose the default NGINX port
 EXPOSE 80
 
-# Use default CMD and entrypoint from nginx
+ENTRYPOINT ["/docker-entrypoint.sh"]
