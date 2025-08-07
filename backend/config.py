@@ -9,7 +9,7 @@ DB_CONFIG = {
 }
 
 API_CONFIG = {
-    "port": int(os.getenv("API_PORT", "5000")),
+    "port": int(os.getenv("BACKEND_PORT", "5000")),
 }
 
 ASSET_CONFIG = {
