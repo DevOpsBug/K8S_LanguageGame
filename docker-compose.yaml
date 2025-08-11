@@ -34,6 +34,9 @@ services:
     image: ghcr.io/devopsbug/k8s_languagegame_frontend:latest
     pull_policy: always
     container_name: k8s_languagegame_frontend
+    environment:
+      BACKEND_PORT: ${BACKEND_PORT}
+      BACKEND_HOST: backend
     ports:
       - "8080:80"
     depends_on:
