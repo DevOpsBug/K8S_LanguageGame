@@ -1,8 +1,6 @@
 services:
   db:
     image: k8s_languagegame_db:local
-    #image: ghcr.io/devopsbug/k8s_languagegame_db:latest
-    #pull_policy: always
     container_name: k8s_languagegame_db
     environment:
       POSTGRES_USER: language_game
@@ -13,8 +11,6 @@ services:
 
   backend:
     image: k8s_languagegame_backend:local
-    #image: ghcr.io/devopsbug/k8s_languagegame_backend:latest
-    #pull_policy: always
     container_name: k8s_languagegame_backend
     environment:
       DB_HOST: db
@@ -24,6 +20,9 @@ services:
       DB_PASSWORD: secret
       BACKEND_PORT: ${BACKEND_PORT}
       BACKEND_HOST: 0.0.0.0
+      IMAGE_URL_PREFIX: ${IMAGE_URL_PREFIX}
+      AUDIO_URL_PREFIX: ${AUDIO_URL_PREFIX}
+      LICENSE_URL_PREFIX: ${LICENSE_URL_PREFIX}
     depends_on:
       - db
     ports:
@@ -31,8 +30,6 @@ services:
 
   frontend:
     image: k8s_languagegame_frontend:local
-    #image: ghcr.io/devopsbug/k8s_languagegame_frontend:latest
-    #pull_policy: always
     container_name: k8s_languagegame_frontend
     environment:
       BACKEND_PORT: ${BACKEND_PORT}
