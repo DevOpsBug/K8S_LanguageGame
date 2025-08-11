@@ -1,16 +1,16 @@
 // Map of languages to flag image paths
 const flagImages = {
-    english: 'https://devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg',
-    italian: 'https://devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg',
-    german: 'https://devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg',
+    english: 'https://static.devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg',
+    italian: 'https://static.devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg',
+    german: 'https://static.devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg',
 
 };
 
 // Map of categories to image paths
 const categoryImages = {
-    fruits: 'https://devopsbug.com/media/projects/openlingua/images/categories/fruit-4202929_640.png',
-    vegetables: 'https://devopsbug.com/media/projects/openlingua/images/categories/vegetables-1105635_640.jpg',
-    animals: 'https://devopsbug.com/media/projects/openlingua/images/categories/zoo-7417502_640.png',
+    fruits: 'https://static.devopsbug.com/media/projects/openlingua/images/categories/fruit-4202929_640.png',
+    vegetables: 'https://static.devopsbug.com/media/projects/openlingua/images/categories/vegetables-1105635_640.jpg',
+    animals: 'https://static.devopsbug.com/media/projects/openlingua/images/categories/zoo-7417502_640.png',
 };
 
 // Parse language from query parameters

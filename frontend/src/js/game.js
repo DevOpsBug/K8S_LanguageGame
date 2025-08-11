@@ -13,9 +13,9 @@ const apiUrl = `/api/language-game?language=${selectedLanguage}&category=${categ
 
 // Map of languages to flag image paths
 const flagImages = {
-    english: 'https://devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg',
-    italian: 'https://devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg',
-    german: 'https://devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg',
+    english: 'https://static.devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg',
+    italian: 'https://static.devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg',
+    german: 'https://static.devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg',
 };
 
 // Update the flag image based on the selected language
