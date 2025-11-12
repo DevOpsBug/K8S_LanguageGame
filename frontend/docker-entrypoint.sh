@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sed -i "s#__FRONTEND_PORT__#$FRONTEND_PORT#g" /etc/nginx/nginx.conf
 sed -i "s#__BACKEND_HOST__#$BACKEND_HOST#g" /etc/nginx/nginx.conf
 sed -i "s#__BACKEND_PORT__#$BACKEND_PORT#g" /etc/nginx/nginx.conf
 
