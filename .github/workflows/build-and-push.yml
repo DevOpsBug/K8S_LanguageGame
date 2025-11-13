@@ -51,6 +51,16 @@ jobs:
       - name: Build and push ${{ matrix.service }} image
         if: steps.changes.outputs.changed == 'true'
         run: |
-          IMAGE_NAME=ghcr.io/devopsbug/k8s_languagegame_${{ matrix.service }}:latest
-          docker build -t $IMAGE_NAME .
-          docker push $IMAGE_NAME
+          IMAGE_BASE="ghcr.io/devopsbug/k8s_languagegame_${{ matrix.service }}"
+
+          # Use the repository's sequential workflow run number as the pipeline tag
+          TAG="${GITHUB_RUN_NUMBER}"
+
+          echo "Building ${IMAGE_BASE}:${TAG} and ${IMAGE_BASE}:latest"
+          docker build -t "${IMAGE_BASE}:latest" -t "${IMAGE_BASE}:${TAG}" .
+
+          echo "Pushing ${IMAGE_BASE}:latest"
+          docker push "${IMAGE_BASE}:latest"
+
+          echo "Pushing ${IMAGE_BASE}:${TAG}"
+          docker push "${IMAGE_BASE}:${TAG}"
