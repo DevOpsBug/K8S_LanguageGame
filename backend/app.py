@@ -5,6 +5,23 @@ import random
 
 app = Flask(__name__)
 
+@app.route("/userinfo")
+def userinfo():
+    user = request.headers.get("X-Auth-Request-User")
+    email = request.headers.get("X-Auth-Request-Email")
+    name = request.headers.get("X-Auth-Request-Name")
+    username = request.headers.get("X-Auth-Request-Preferred-Username")
+    groups = request.headers.get("X-Auth-Request-Groups")
+
+    return jsonify({
+        "authenticated": bool(user),
+        "user": user or "",
+        "email": email or "",
+        "name": name or "",
+        "username": username or "",
+        "groups": groups or ""
+    })
+
 @app.route("/assets/all", methods=["GET"])
 def get_assets():
     with psycopg.connect(**DB_CONFIG) as conn:
