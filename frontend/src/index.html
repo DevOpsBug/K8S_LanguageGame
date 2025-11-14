@@ -23,7 +23,7 @@
                 <!-- CONTENT AREA -->
                 <h1 class="title">Welcome</h1>
 
-                <p id="user-status">Loading...</p>
+                <pre id="user-status">Loading...</pre>
 
 
                 <button onclick="window.location.href='/start.html'">Continue as Guest</button>
@@ -47,21 +47,14 @@
         <script>
         async function loadUserInfo() {
             try {
-                const response = await fetch('/userinfo', { credentials: 'include' });
+                const response = await fetch('/api/userinfo', { credentials: 'include' });
                 const data = await response.json();
 
-                const isLoggedIn = data.authenticated !== "";
+                // Display the full JSON body of the response, pretty-printed
+                const pretty = JSON.stringify(data, null, 2);
+                document.getElementById("user-status").textContent = pretty;
 
-                document.getElementById("user-status").textContent = 
-                    isLoggedIn ? `Logged in as ${data.email}` : "Guest";
 
-                if (isLoggedIn) {
-                    document.getElementById("login-btn").style.display = "none";
-                    document.getElementById("logout-btn").style.display = "inline-block";
-                } else {
-                    document.getElementById("logout-btn").style.display = "none";
-                    document.getElementById("login-btn").style.display = "inline-block";
-                }
 
             } catch (err) {
                 console.error("Error loading user info", err);
