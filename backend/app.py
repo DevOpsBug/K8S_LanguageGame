@@ -7,20 +7,9 @@ app = Flask(__name__)
 
 @app.route("/userinfo")
 def userinfo():
-    user = request.headers.get("X-Auth-Request-User")
-    email = request.headers.get("X-Auth-Request-Email")
-    name = request.headers.get("X-Auth-Request-Name")
-    username = request.headers.get("X-Auth-Request-Preferred-Username")
-    groups = request.headers.get("X-Auth-Request-Groups")
-
-    return jsonify({
-        "authenticated": bool(user),
-        "user": user or "",
-        "email": email or "",
-        "name": name or "",
-        "username": username or "",
-        "groups": groups or ""
-    })
+    # Return all incoming request headers as a JSON object.
+    # Converting request.headers to a dict preserves header names and values.
+    return jsonify(dict(request.headers))
 
 @app.route("/assets/all", methods=["GET"])
 def get_assets():
