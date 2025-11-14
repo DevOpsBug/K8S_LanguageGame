@@ -112,5 +112,10 @@ def get_language_game():
                 }
                 )
 
+
+@app.route("/private/authinfo")
+def userinfo():
+    return jsonify(dict(request.headers))
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=API_CONFIG["port"])
