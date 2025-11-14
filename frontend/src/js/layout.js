@@ -12,13 +12,20 @@ async function loadUserInfo() {
         const response = await fetch('/api/public/userinfo', { credentials: 'include' });
         const data = await response.json();
 
-        // Display the full JSON body of the response, pretty-printed
-        const pretty = JSON.stringify(data, null, 2);
-        document.getElementById("user-status").textContent = pretty;
-
-
+        if (data.authenticated) {
+            document.getElementById("user-status").textContent = "User: " + data.email;
+            document.getElementById("login-btn").style.display = "none";
+            document.getElementById("logout-btn").style.display = "inline-block";
+            document.getElementById("private-area").style.display = "inline-block";
+        } else {
+            document.getElementById("user-status").textContent = "User: Guest";
+            document.getElementById("login-btn").style.display = "inline-block";
+            document.getElementById("logout-btn").style.display = "none";
+            document.getElementById("private-area").style.display = "none";
+        }
 
     } catch (err) {
+        document.getElementById("user-status").textContent = "User: Guest";
         console.error("Error loading user info", err);
     }
 }
