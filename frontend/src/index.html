@@ -47,7 +47,7 @@
         <script>
         async function loadUserInfo() {
             try {
-                const response = await fetch('/api/userinfo', { credentials: 'include' });
+                const response = await fetch('/api/public/userinfo', { credentials: 'include' });
                 const data = await response.json();
 
                 // Display the full JSON body of the response, pretty-printed
