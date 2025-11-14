@@ -21,15 +21,19 @@
             <div id="content">
 
                 <!-- CONTENT AREA -->
-                <h1 class="title">Welcome</h1>
-
-                <pre id="user-status">Loading...</pre>
-
-
-                <button onclick="window.location.href='/start.html'">Continue as Guest</button>
-                <button id="login-btn" onclick="window.location.href='/private/private.html'">Login</button>
-                <button id="logout-btn" onclick="window.location.href='/oauth2/sign_out'">Logout</button>
-
+                <h1 class="title">Choose Your Language</h1>
+                <div class="flag-grid">
+                    <button class="flag-button" data-language="english">
+                        <img src="https://static.devopsbug.com/media/projects/openlingua/images/flags/united-26967.svg" alt="American Flag" class="flag-image" >
+                    </button>
+                    <button class="flag-button" data-language="italian">
+                        <img src="https://static.devopsbug.com/media/projects/openlingua/images/flags/italy-162326.svg" alt="Italian Flag" class="flag-image" >
+                    </button>
+                    <button class="flag-button" data-language="german">
+                        <img src="https://static.devopsbug.com/media/projects/openlingua/images/flags/germany-4894687.svg" alt="German Flag" class="flag-image" >
+                    </button>
+                </div>
+                <script src="/js/index.js"></script>
                 <!-- END CONTENT AREA -->
                  
             </div>
@@ -42,27 +46,6 @@
 
         <!-- SCRIPT TO DYNAMICALLY LOAD PARTIALS -->
         <script src="/js/layout.js"></script>
-
-        <!-- SCRIPT TO DYNAMICALLY LOAD PARTIALS -->
-        <script>
-        async function loadUserInfo() {
-            try {
-                const response = await fetch('/api/public/userinfo', { credentials: 'include' });
-                const data = await response.json();
-
-                // Display the full JSON body of the response, pretty-printed
-                const pretty = JSON.stringify(data, null, 2);
-                document.getElementById("user-status").textContent = pretty;
-
-
-
-            } catch (err) {
-                console.error("Error loading user info", err);
-            }
-        }
-        loadUserInfo();
-        </script>
-
 
     </body>
 </html>
