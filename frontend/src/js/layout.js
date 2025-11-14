@@ -7,21 +7,25 @@ async function includeHTML(selector, file) {
   }
 }
 
+async function loadUserInfo() {
+    try {
+        const response = await fetch('/api/public/userinfo', { credentials: 'include' });
+        const data = await response.json();
+
+        // Display the full JSON body of the response, pretty-printed
+        const pretty = JSON.stringify(data, null, 2);
+        document.getElementById("user-status").textContent = pretty;
+
+
+
+    } catch (err) {
+        console.error("Error loading user info", err);
+    }
+}
+        
 // Call this on each page to load layout parts
-window.addEventListener("DOMContentLoaded", () => {
-  includeHTML("#header", "/partials/header.html");
-  includeHTML("#footer", "/partials/footer.html");
-
-  /*
-  const path = window.location.pathname;
-
-  // load dynamic page content
-  if (path === "/" || path === "/index.html") {
-    includeHTML("#content", "/pages/home.html");
-  } else if (path === "/about.html") {
-    includeHTML("#content", "/pages/about.html");
-  } else {
-    includeHTML("#content", "/pages/404.html");
-  }
-    */
+window.addEventListener("DOMContentLoaded", async () => {
+  await includeHTML("#header", "/partials/header.html");
+  await includeHTML("#footer", "/partials/footer.html");
+  loadUserInfo();
 });
