@@ -5,11 +5,22 @@ import random
 
 app = Flask(__name__)
 
-@app.route("/userinfo")
+@app.route("/public/userinfo")
 def userinfo():
-    # Return all incoming request headers as a JSON object.
-    # Converting request.headers to a dict preserves header names and values.
-    return jsonify(dict(request.headers))
+    email = request.headers.get("X-Forwarded-Email")
+    user = request.headers.get("X-Forwarded-User")
+
+    if not user:
+        return jsonify({
+            "authenticated": False,
+        }), 200
+
+    return jsonify({
+        "authenticated": True,
+        "user": user,
+        "email": email
+    }), 200
+
 
 @app.route("/assets/all", methods=["GET"])
 def get_assets():
