@@ -1,0 +1,3 @@
+[submodule "db/data/OpenLingua-Assets"]
+	path = db/data/OpenLingua-Assets
+	url = https://github.com/DevOpsBug/OpenLingua-Assets.git
