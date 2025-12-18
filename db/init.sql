@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS image_assets;
+DROP TABLE IF EXISTS vocabulary_assets;
 
 CREATE TABLE IF NOT EXISTS image_assets (
     id SERIAL PRIMARY KEY,
@@ -24,5 +25,20 @@ CREATE TABLE IF NOT EXISTS image_assets (
     italian_audio_filename TEXT
 );
 
+
+CREATE TABLE IF NOT EXISTS vocabulary_assets (
+    id SERIAL PRIMARY KEY,
+    word_type TEXT,
+    word_subtype TEXT, 
+    word_tags TEXT, 
+    english_word TEXT, 
+    german_word TEXT, 
+    italian_word TEXT, 
+    english_audio_filename TEXT, 
+    german_audio_filename TEXT, 
+    italian_audio_filename TEXT
+);
+
 -- Import only the CSV columns (Postgres will generate the id automatically)
-COPY image_assets(asset_name, asset_category, english_word, german_word, italian_word, image_filename, file_type, image_width, image_height, source, download_url, download_date, license, license_version_date, license_pdf_url, attribution_text, attribution_html, english_audio_filename, german_audio_filename, italian_audio_filename) FROM '/docker-entrypoint-initdb.d/data.csv' WITH CSV HEADER DELIMITER ';';
+COPY image_assets(asset_name, asset_category, english_word, german_word, italian_word, image_filename, file_type, image_width, image_height, source, download_url, download_date, license, license_version_date, license_pdf_url, attribution_text, attribution_html, english_audio_filename, german_audio_filename, italian_audio_filename) FROM '/docker-entrypoint-initdb.d/image_assets.csv' WITH CSV HEADER DELIMITER ',';
+COPY vocabulary_assets(word_type, word_subtype, word_tags, english_word, german_word, italian_word, english_audio_filename, german_audio_filename, italian_audio_filename) FROM '/docker-entrypoint-initdb.d/vocabulary_assets.csv' WITH CSV HEADER DELIMITER ',';

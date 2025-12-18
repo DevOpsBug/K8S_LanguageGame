@@ -11,5 +11,6 @@ COPY ./data/*.csv /init/csv/
 COPY ./combine_csv_files.sh /init/
 RUN chmod +x /init/combine_csv_files.sh
 # Run the script to combine CSV files into a single file
-RUN /init/combine_csv_files.sh -i /init/csv/ -o /docker-entrypoint-initdb.d/data.csv
+RUN /init/combine_csv_files.sh -i /init/csv/ -o /docker-entrypoint-initdb.d/image_assets.csv
+RUN /init/combine_csv_files.sh -i /init/csv/ -o /docker-entrypoint-initdb.d/vocabulary_assets.csv
 COPY init.sql /docker-entrypoint-initdb.d/
